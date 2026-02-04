@@ -110,8 +110,8 @@ const poeticLines = [
 const memories = [
   { title: "The Artist", description: "From Shanghai kindergarten to global designer" },
   { title: "The Explorer", description: "Antarctica, Peru, Northern Lights, and beyond" },
-  { title: "The Dancer", description: "Grace in motion, poetry in every step" },
-  { title: "The Dreamer", description: "Visions that inspire entire communities" },
+  { title: "UVA Days", description: "Where our story began, late nights and endless laughs" },
+  { title: "DC Chapter", description: "A year of post-grad adventures together" },
 ]
 
 export default function Home() {
@@ -129,12 +129,12 @@ export default function Home() {
     "Hey beautiful...",
     "I've been thinking about you.",
     "About how lucky I am to have you in my life.",
-    "Remember when we first met? I knew you were special.",
-    "Every adventure with you—from Antarctica to the Northern Lights—has been pure magic.",
+    "Remember UVA? Those late nights, the laughs, falling for you.",
+    "Our year in DC together—every moment was an adventure.",
     "Your art, your passion, your spirit... you inspire me every single day.",
     "I love how you see the world differently. How you find beauty everywhere.",
     "I love your laugh. Your creativity. Your kindness.",
-    "I can't wait for Dubai, and every chapter after that.",
+    "I'm so proud of you, and I can't wait to see you thrive in Dubai.",
     "You're not just my favorite person...",
     "You're my favorite everything. 💕",
   ]
@@ -593,16 +593,16 @@ export default function Home() {
           
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="max-w-xl">
-              <p className="font-display text-xs tracking-[0.3em] text-[var(--gold)] mb-4">COMING SOON</p>
+              <p className="font-display text-xs tracking-[0.3em] text-[var(--gold)] mb-4">YOUR NEXT CHAPTER</p>
               <h3 className="font-editorial text-5xl md:text-7xl text-white italic mb-6">Dubai</h3>
               <p className="font-serif text-xl text-white/70 leading-relaxed mb-8">
-                The next chapter awaits. A city of gold and glass, where ancient traditions meet 
-                futuristic dreams. I know you'll fill it with your unique magic—and I can't wait 
-                to see where this adventure takes you.
+                A city of gold and glass awaits you. I'm so incredibly proud of you for taking this leap.
+                Even from afar, I'll be cheering you on every step of the way. Go fill the world 
+                with your magic, Viv.
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-16 h-[1px] bg-gradient-to-r from-[var(--gold)] to-transparent" />
-                <p className="font-serif text-sm text-white/40 italic">Your next great adventure</p>
+                <p className="font-serif text-sm text-white/40 italic">I'll always be rooting for you</p>
               </div>
             </div>
           </div>
@@ -931,9 +931,9 @@ export default function Home() {
             {/* Final love letter text */}
             <div className="text-center mb-16">
               <p className="font-serif text-xl md:text-2xl text-[var(--ink-light)] leading-relaxed drop-cap max-w-3xl mx-auto">
-                From Shanghai to Orlando, from the frozen wonder of Antarctica to the dancing lights of the aurora, 
-                from the ancient heights of Machu Picchu to the glittering promise of Dubai—wherever your beautiful 
-                spirit wanders, my heart will always find its way to you.
+                From those first moments at UVA to our adventures in DC, through every laugh and late night—
+                you've made my world infinitely brighter. And as you chase your dreams in Dubai, know that 
+                my heart will always be with you, cheering you on from wherever I am.
               </p>
               <p className="font-serif text-xl md:text-2xl text-[var(--ink-light)] leading-relaxed max-w-3xl mx-auto mt-8">
                 You are my favorite artist. My favorite explorer. My favorite dancer. My favorite dreamer. 
