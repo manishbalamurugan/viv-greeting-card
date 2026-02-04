@@ -2,83 +2,90 @@
 
 import { useEffect, useState } from 'react'
 
-// High-quality images - verified Dutch Masters dark floral and all others
+// Premium editorial-quality images - artistic, dramatic, unique
 const images = {
-  // HERO - Dutch Masters Dark Floral (the red one you love)
+  // HERO - Dutch Masters Dark Floral (keep exact same)
   heroFloral: 'https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1920&auto=format&fit=crop',
   dutchMasters: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&auto=format&fit=crop',
   darkBotanical: 'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=1920&auto=format&fit=crop',
   
-  // Renaissance/Classical Art
-  renaissance: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1600&auto=format&fit=crop',
-  classicalArt: 'https://images.unsplash.com/photo-1580136607857-4d48d5a6ba25?w=1600&auto=format&fit=crop',
-  museum: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=1600&auto=format&fit=crop',
-  artGallery: 'https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=1600&auto=format&fit=crop',
+  // Renaissance/Classical Art - museum quality, dramatic
+  renaissance: 'https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=1920&auto=format&fit=crop',
+  classicalArt: 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1920&auto=format&fit=crop',
+  museum: 'https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=1920&auto=format&fit=crop',
+  artGallery: 'https://images.unsplash.com/photo-1577720643272-265f09367456?w=1920&auto=format&fit=crop',
   
-  // Shanghai - Her origins
-  shanghai: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1600&auto=format&fit=crop',
-  shanghaiNight: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1600&auto=format&fit=crop',
-  shanghaiSkyline: 'https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=1600&auto=format&fit=crop',
+  // Shanghai - dramatic night cityscape, artistic angles
+  shanghai: 'https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=1920&auto=format&fit=crop',
+  shanghaiNight: 'https://images.unsplash.com/photo-1545893835-abaa50cbe628?w=1920&auto=format&fit=crop',
+  shanghaiSkyline: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&auto=format&fit=crop',
   
-  // Orlando - Her current home  
-  orlando: 'https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?w=1600&auto=format&fit=crop',
-  florida: 'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1600&auto=format&fit=crop',
-  floridaSunset: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1600&auto=format&fit=crop',
+  // Orlando/Florida - stunning tropical paradise, golden hour
+  orlando: 'https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?w=1920&auto=format&fit=crop',
+  florida: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1920&auto=format&fit=crop',
+  floridaSunset: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1920&auto=format&fit=crop',
+  floridaBeach: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&auto=format&fit=crop',
   
-  // Dubai - Her next chapter
-  dubai: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&auto=format&fit=crop',
-  dubaiNight: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600&auto=format&fit=crop',
-  dubaiDesert: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=1600&auto=format&fit=crop',
+  // Dubai - architectural marvel, cinematic
+  dubai: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&auto=format&fit=crop',
+  dubaiNight: 'https://images.unsplash.com/photo-1546412414-e1885259563a?w=1920&auto=format&fit=crop',
+  dubaiDesert: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=1920&auto=format&fit=crop',
+  burjKhalifa: 'https://images.unsplash.com/photo-1583043529255-e80d5c3b61ac?w=1920&auto=format&fit=crop',
   
-  // Antarctica - Penguins!
-  antarctica: 'https://images.unsplash.com/photo-1551415923-a2297c7fda79?w=1600&auto=format&fit=crop',
-  antarcticaIce: 'https://images.unsplash.com/photo-1494564605686-2e931f77a8e2?w=1600&auto=format&fit=crop',
-  antarcticaLandscape: 'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=1600&auto=format&fit=crop',
+  // Antarctica - breathtaking ice landscapes (keep penguin as is per request)
+  antarctica: 'https://images.unsplash.com/photo-1551415923-a2297c7fda79?w=1920&auto=format&fit=crop',
+  antarcticaIce: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1920&auto=format&fit=crop',
+  antarcticaLandscape: 'https://images.unsplash.com/photo-1528474855169-57ba33b6c1e1?w=1920&auto=format&fit=crop',
   
-  // Northern Lights
-  aurora: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1600&auto=format&fit=crop',
-  auroraGreen: 'https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=1600&auto=format&fit=crop',
-  auroraIceland: 'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=1600&auto=format&fit=crop',
+  // Northern Lights - vivid, cinematic aurora shots
+  aurora: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1920&auto=format&fit=crop',
+  auroraGreen: 'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=1920&auto=format&fit=crop',
+  auroraIceland: 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1920&auto=format&fit=crop',
   
-  // Peru - Machu Picchu
-  peru: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1600&auto=format&fit=crop',
-  machuPicchu: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1600&auto=format&fit=crop',
-  peruMountains: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1600&auto=format&fit=crop',
+  // Peru - dramatic Machu Picchu, misty mountains
+  peru: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1920&auto=format&fit=crop',
+  machuPicchu: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1920&auto=format&fit=crop',
+  peruMountains: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&auto=format&fit=crop',
   
-  // Dance/Ballet
-  ballet: 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=1600&auto=format&fit=crop',
-  dancer: 'https://images.unsplash.com/photo-1547153760-18fc86324498?w=1600&auto=format&fit=crop',
-  danceStudio: 'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=1600&auto=format&fit=crop',
+  // Dance/Ballet - artistic, dramatic lighting
+  ballet: 'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=1920&auto=format&fit=crop',
+  dancer: 'https://images.unsplash.com/photo-1545959570-a94084071b5d?w=1920&auto=format&fit=crop',
+  danceStudio: 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=1920&auto=format&fit=crop',
   
-  // Art/Design
-  painting: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1600&auto=format&fit=crop',
-  design: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&auto=format&fit=crop',
-  typography: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1600&auto=format&fit=crop',
-  brushstrokes: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&auto=format&fit=crop',
-  artSupplies: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&auto=format&fit=crop',
+  // Art/Design - creative, painterly, artistic process
+  painting: 'https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=1920&auto=format&fit=crop',
+  design: 'https://images.unsplash.com/photo-1558865869-c93f6f8482af?w=1920&auto=format&fit=crop',
+  typography: 'https://images.unsplash.com/photo-1505682634904-d7c8d95cdc50?w=1920&auto=format&fit=crop',
+  brushstrokes: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1920&auto=format&fit=crop',
+  artSupplies: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1920&auto=format&fit=crop',
+  colorPalette: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1920&auto=format&fit=crop',
   
-  // Penguins - Her favorites
+  // Penguins - keep as is per request
   penguin: 'https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=1600&auto=format&fit=crop',
   penguins: 'https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=1600&auto=format&fit=crop',
-  penguinCute: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&auto=format&fit=crop',
-  penguinFamily: 'https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=1600&auto=format&fit=crop',
-  emperorPenguin: 'https://images.unsplash.com/photo-1462888210965-cdf193fb74de?w=1600&auto=format&fit=crop',
+  penguinCute: 'https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=1600&auto=format&fit=crop',
+  penguinFamily: 'https://images.unsplash.com/photo-1598439210625-5067c578f3f6?w=1600&auto=format&fit=crop',
+  emperorPenguin: 'https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=1600&auto=format&fit=crop',
   
-  // Flowers/Romance - Rich botanical
-  flowers: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1600&auto=format&fit=crop',
-  peonies: 'https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?w=1600&auto=format&fit=crop',
-  roses: 'https://images.unsplash.com/photo-1518882605630-8eb559cc3757?w=1600&auto=format&fit=crop',
-  gardenRoses: 'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1600&auto=format&fit=crop',
-  wildflowers: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1600&auto=format&fit=crop',
+  // Flowers/Romance - lush, romantic, editorial
+  flowers: 'https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1920&auto=format&fit=crop',
+  peonies: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1920&auto=format&fit=crop',
+  roses: 'https://images.unsplash.com/photo-1518882605630-8eb559cc3757?w=1920&auto=format&fit=crop',
+  gardenRoses: 'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1920&auto=format&fit=crop',
+  wildflowers: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&auto=format&fit=crop',
   
-  // Abstract art  
-  abstract: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1600&auto=format&fit=crop',
-  watercolor: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1600&auto=format&fit=crop',
-  gradient: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1600&auto=format&fit=crop',
+  // Abstract art - vibrant, artistic
+  abstract: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1920&auto=format&fit=crop',
+  watercolor: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1920&auto=format&fit=crop',
+  gradient: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&auto=format&fit=crop',
   
-  // Night sky / stars
-  stars: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&auto=format&fit=crop',
-  milkyway: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=1600&auto=format&fit=crop',
+  // Night sky / stars - cinematic
+  stars: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&auto=format&fit=crop',
+  milkyway: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=1920&auto=format&fit=crop',
+  
+  // California - iconic golden state
+  california: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&auto=format&fit=crop',
+  goldenGate: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&auto=format&fit=crop',
 }
 
 const chapters = [
@@ -347,22 +354,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ==================== MARQUEE - Shopify Style ==================== */}
+      <section className="relative py-6 bg-[var(--ink)] overflow-hidden border-y border-white/10">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12 px-6">
+              <span className="font-display text-sm tracking-[0.3em] text-white/30">ARTIST</span>
+              <span className="text-[var(--accent)]">✦</span>
+              <span className="font-display text-sm tracking-[0.3em] text-white/30">EXPLORER</span>
+              <span className="text-[var(--gold)]">✦</span>
+              <span className="font-display text-sm tracking-[0.3em] text-white/30">DANCER</span>
+              <span className="text-[var(--purple)]">✦</span>
+              <span className="font-display text-sm tracking-[0.3em] text-white/30">DREAMER</span>
+              <span className="text-[var(--accent)]">✦</span>
+              <span className="font-display text-sm tracking-[0.3em] text-white/30">BELOVED</span>
+              <span className="text-[var(--gold)]">✦</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ==================== INTRO TRANSITION ==================== */}
-      <section className="relative py-32 px-6 bg-[var(--cream)]">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="font-serif text-xl md:text-2xl text-[var(--ink-light)] leading-relaxed">
+      <section className="relative py-32 px-6 bg-[var(--cream)] overflow-hidden">
+        {/* Decorative corner elements */}
+        <div className="absolute top-8 left-8 w-24 h-24 border-l-2 border-t-2 border-[var(--accent)]/20" />
+        <div className="absolute top-8 right-8 w-24 h-24 border-r-2 border-t-2 border-[var(--accent)]/20" />
+        <div className="absolute bottom-8 left-8 w-24 h-24 border-l-2 border-b-2 border-[var(--accent)]/20" />
+        <div className="absolute bottom-8 right-8 w-24 h-24 border-r-2 border-b-2 border-[var(--accent)]/20" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p className="font-display text-xs tracking-[0.4em] text-[var(--accent)] mb-8">A CELEBRATION OF YOU</p>
+          <p className="font-serif text-2xl md:text-3xl text-[var(--ink-light)] leading-relaxed">
             This is not just a website. It's a love letter. A gallery. A journey through the moments, 
-            memories, and magic that make you, Vivika Parmar, the most extraordinary person I know.
+            memories, and magic that make you, <span className="font-editorial italic text-[var(--accent)]">Vivika Parmar</span>, the most extraordinary person I know.
           </p>
         </div>
         
         {/* Memory cards */}
-        <div className="max-w-6xl mx-auto mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-6xl mx-auto mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {memories.map((item, i) => (
-            <div key={i} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-[var(--accent)]/10">
-              <p className="font-display text-xs tracking-widest text-[var(--accent)] mb-2">0{i + 1}</p>
-              <h3 className="font-editorial text-xl text-[var(--ink)] italic mb-2">{item.title}</h3>
-              <p className="font-serif text-sm text-[var(--ink-muted)]">{item.description}</p>
+            <div key={i} className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[var(--accent)]/10 hover:-translate-y-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--gold)] flex items-center justify-center">
+                  <span className="font-display text-xs text-white">0{i + 1}</span>
+                </div>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-[var(--accent)]/30 to-transparent" />
+              </div>
+              <h3 className="font-editorial text-2xl text-[var(--ink)] italic mb-3">{item.title}</h3>
+              <p className="font-serif text-base text-[var(--ink-muted)] leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+        
+        {/* Stats row - Shopify style */}
+        <div className="max-w-4xl mx-auto mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { num: '7+', label: 'Countries Explored' },
+            { num: '∞', label: 'Creative Ideas' },
+            { num: '4', label: 'Years in Orlando' },
+            { num: '1', label: 'True Love' },
+          ].map((stat, i) => (
+            <div key={i} className="group">
+              <p className="font-editorial text-5xl md:text-6xl text-[var(--ink)] italic mb-2 group-hover:text-[var(--accent)] transition-colors">{stat.num}</p>
+              <p className="font-display text-xs tracking-widest text-[var(--ink-muted)]">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -494,8 +548,8 @@ export default function Home() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { img: images.shanghaiNight, place: 'Shanghai', year: 'Origins', desc: 'Where your story began—a city of lights and dreams', color: 'var(--accent)' },
-                { img: images.florida, place: 'California', year: '2011', desc: 'New horizons, new cultures, new inspirations', color: 'var(--gold)' },
-                { img: images.orlando, place: 'Orlando', year: '4 Years', desc: 'Sun-soaked days and creative adventures', color: 'var(--accent)' },
+                { img: images.california, place: 'California', year: '2011', desc: 'Golden state sunsets and new beginnings', color: 'var(--gold)' },
+                { img: images.floridaBeach, place: 'Orlando', year: '4 Years', desc: 'Sun-kissed beaches and creative adventures', color: 'var(--accent)' },
                 { img: images.antarctica, place: 'Antarctica', year: 'Dream Trip', desc: 'Dancing with penguins in a world of ice', color: 'var(--teal)' },
                 { img: images.aurora, place: 'Northern Lights', year: 'Magic', desc: 'Chasing celestial fire across the sky', color: 'var(--purple)' },
                 { img: images.machuPicchu, place: 'Peru', year: 'Adventure', desc: 'Among ancient clouds and Incan whispers', color: 'var(--gold)' },

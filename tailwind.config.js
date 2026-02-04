@@ -35,6 +35,8 @@ module.exports = {
         'scale-in': 'scale-in 0.6s ease-out forwards',
         'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
         'rotate-slow': 'rotate-slow 30s linear infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'shimmer': 'shimmer 2s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -73,6 +75,14 @@ module.exports = {
         'rotate-slow': {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
+        },
+        'marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-33.33%)' },
+        },
+        'shimmer': {
+          '0%, 100%': { opacity: '0.5' },
+          '50%': { opacity: '1' },
         },
       },
     },
